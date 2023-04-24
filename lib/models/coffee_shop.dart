@@ -1,6 +1,7 @@
 import 'package:coffea_shop_app/models/coffee.dart';
+import 'package:flutter/cupertino.dart';
 
-class CoffeeShop {
+class CoffeeShop extends ChangeNotifier {
   //coffee for sale
   final List<Coffee> _shop = [
     Coffee(name: 'Black Coffee', prize: '4.30', img: 'assets/img4.png'),
@@ -17,10 +18,12 @@ class CoffeeShop {
 //add item to cart
   void addItemToCart(Coffee coffee) {
     _usercart.add(coffee);
+    notifyListeners();
   }
 
 // remove item from cart
   void removeItemFromCart(Coffee coffee) {
     _usercart.remove(coffee);
+    notifyListeners();
   }
 }

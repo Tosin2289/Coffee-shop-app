@@ -1,4 +1,10 @@
+import 'dart:html';
+import 'dart:ui';
+
+import 'package:coffea_shop_app/models/coffee.dart';
+import 'package:coffea_shop_app/models/coffee_shop.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Shop extends StatefulWidget {
   const Shop({Key? key}) : super(key: key);
@@ -10,6 +16,34 @@ class Shop extends StatefulWidget {
 class _ShopState extends State<Shop> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("Shop Page"));
+    return Consumer<CoffeeShop>(builder: ((context, value, child) {
+      return SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(25.0),
+          child: Column(
+            children: [
+              Text(
+                "How would You like Your Coffee",
+                style: TextStyle(fontSize: 20),
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: value.coffeeShop.length,
+                  itemBuilder: ((context, index) {
+                    Coffee eachcoffee = value.coffeeShop[index];
+                    return ListTile(
+                      title: Text(eachcoffee.name),
+                    );
+                  }),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }));
   }
 }
