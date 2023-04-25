@@ -1,5 +1,6 @@
 import 'package:coffea_shop_app/models/coffee_shop.dart';
 import 'package:coffea_shop_app/pages/homepage.dart';
+import 'package:coffea_shop_app/pages/intropage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,10 +17,7 @@ class MyApp extends StatelessWidget {
       create: ((context) => CoffeeShop()),
       builder: (context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: HomePage(),
+        home: IntroPage(),
       ),
     );
   }

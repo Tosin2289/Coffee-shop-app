@@ -12,7 +12,15 @@ class Shop extends StatefulWidget {
 }
 
 class _ShopState extends State<Shop> {
-  void addtocart() {}
+  void addtocart(Coffee coffee) {
+    Provider.of<CoffeeShop>(context, listen: false).addItemToCart(coffee);
+    final snackBar = SnackBar(
+      behavior: SnackBarBehavior.fixed,
+      content: Text("Successfully added to cart"),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<CoffeeShop>(builder: ((context, value, child) {
@@ -35,7 +43,8 @@ class _ShopState extends State<Shop> {
                     Coffee eachcoffee = value.coffeeShop[index];
                     return CoffeeTile(
                       coffee: eachcoffee,
-                      onPressed: addtocart,
+                      icon: Icon(Icons.add),
+                      onPressed: (() => addtocart(eachcoffee)),
                     );
                   }),
                 ),

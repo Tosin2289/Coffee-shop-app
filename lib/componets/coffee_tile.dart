@@ -5,7 +5,12 @@ import '../models/coffee.dart';
 class CoffeeTile extends StatelessWidget {
   final Coffee coffee;
   void Function()? onPressed;
-  CoffeeTile({Key? key, required this.coffee, required this.onPressed})
+  final Widget icon;
+  CoffeeTile(
+      {Key? key,
+      required this.coffee,
+      required this.onPressed,
+      required this.icon})
       : super(key: key);
 
   @override
@@ -22,7 +27,7 @@ class CoffeeTile extends StatelessWidget {
         title: Text(coffee.name),
         subtitle: Text(coffee.prize),
         trailing: IconButton(
-          icon: Icon(Icons.add),
+          icon: icon,
           onPressed: onPressed,
         ),
       ),
